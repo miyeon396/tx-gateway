@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: gw
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            # ?? /api/payments ??? Application?? ???
+            - id: payment-service
+              uri: http://localhost:8080
+              predicates:
+                - Path=/v1/common/payments/**
+              filters:
+                - StripPrefix=0  # path ??? ??

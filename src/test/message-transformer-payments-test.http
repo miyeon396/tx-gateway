@@ -1,0 +1,29 @@
+### payments 테스트
+POST http://localhost:8081/v1/common/payments
+User-Agent: IntelliJTest/1.0
+Content-Type: application/json
+
+{
+  "id": "tobeUser001",
+  "amount": 2000,
+  "type": "AUTH",
+  "currency": "KRW"
+}
+
+### payments 테스트 - asis
+### POST http://localhost:8080/api/payments?DATA=HiIamaAsIsByeBabo==
+### echo -n "ASISUSER001|AUTH|홍길동|10000|TX123" | base64
+#POST http://localhost:8080/v1/common/payments?DATA=QVNJU1VTRVIwMDF8QVVUSHztmY3quLjrj5l8MTAwMDB8VFgxMjM=
+#POST http://localhost:8080/v1/common/payments?DATA=D7kf9IFXCOeG5SRgL/bCurrp++BPF1j3qgq3YxaIpCkIvi2PUfIyAmmCoNscOAk0
+### jsonString암호화버전
+POST http://localhost:8081/v1/common/payments?
+    DATA=fr9sIiJtG2Xk7cK1PQ7rix4a3O6d4OWD5STNfn/y8Zonyaj9Z4C3KE96UqAmqh8jECzTg5JHih/i8HFTxNUxxYHWCHK69+UzMdmwrWQDLAhyYCRxlzjx8u8Y76Ry3NlkK8OnzN1gUQyo+Z4kGG3Okk3Okl2/3FXFOC3AnS5rduU=
+User-Agent: IntelliJTest/1.0
+Content-Type: application/json
+
+### auth 이후 tid Setting 버전
+### RequestTest에서 암호화 후 아래 데이터 추가 필요
+POST http://localhost:8081/v1/common/payments?
+    DATA=v75zcxd5IZVarXbDvz1+3vs16B7PnVxLUuNmBAg+YP7JWpZjq8frJ8/zK9wnthCwpKRBjq/8DJr3SIgHZIk55Nw0uvxeOddb0JBANa4D8GR7AFHvFYzg+jKnMiLazK3If+rDrr3uqDNTwWQJPgqDMkJ2GvMWrFCQcCW/VvPiqI+4fy7DJCQhUNNB3YfcSiWMeP63++1Vt+7CtLytqX0Chut9mL7sj/n0HlEsnnqXyYM=
+User-Agent: IntelliJTest/1.0
+Content-Type: application/json
