@@ -18,14 +18,38 @@ public class RequestTest {
 
 	@Test
 	public void test() throws Exception {
-		String a = "202509011032569011537007000002";
-		String type = "PRE_AUTH";
+		String plainTid = "202509151343009247311007000004";
+		String type = "BILL";
 
-		String plain = "{\"TID\":\""+a+"\",\"USERID\":\"ASISUSER001\",\"TYPE\":\""+type+"\",\"USERNAME\":\"홍길동\",\"AMOUNT\":10000,\"URL\":\"auth.url.com\",\"PAYMENTMETHOD\":\"BANK\"}";
+		String tidStr = "\"TID\":\""+plainTid+"\",";
+		String startStr = "{";
+		String plain =
+			  "    \"merchantId\": \"CPID0123\",\n"
+			+ "    \"serviceType\": \"COMMON\",\n"
+			+ "    \"type\": \""+type+"\",\n"
+			+ "    \"amount\": 2000,\n"
+			+ "    \"orderId\": \"orderidorderidorderid\",\n"
+			+ "    \"itemName\": \"사과\",\n"
+			+ "    \"userId\": \"asisUserId\",\n"
+			+ "    \"userName\": \"asisUser\",\n"
+			+ "    \"returnUrl\": \"return.com\",\n"
+			+ "    \"testColumn\": \"Test\",\n"
+			+ "    \"bankCode\": \"kb\"\n";
+		String endStr = "}";
+
+		String join;
+		if (type.equals("AUTH")) {
+			join = String.format("%s%s%s", startStr, plain, endStr);
+		}  else {
+			join = String.format("%s%s%s%s",startStr, tidStr, plain, endStr);
+		}
+		System.out.println("join >> " + join);
+
+
 		String key = "1234567890123456"; // AES-128 키
 		String iv = "1234567890123456";  // IV
 
-		String encrypted = encryptAES(plain, key, iv, true);
+		String encrypted = encryptAES(join, key, iv, true);
 		System.out.println("Encrypted (Hex): " + encrypted);
 
 		String decrypted = decryptAES(encrypted, key, iv, true);

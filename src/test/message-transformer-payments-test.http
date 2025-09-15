@@ -4,26 +4,40 @@ User-Agent: IntelliJTest/1.0
 Content-Type: application/json
 
 {
-  "id": "tobeUser001",
-  "amount": 2000,
-  "type": "AUTH",
-  "currency": "KRW"
+  "contextHeader": {
+    "businessMethod": "BANK",
+    "traceId": "throughd1traceid",
+    "sourceSystem": "D1",
+    "targetSystem": "BANK",
+    "machineNumber": "03"
+  },
+  "contextData": {
+    "merchantId": "CPID0123",
+    "serviceType": "COMMON",
+    "type": "AUTH",
+    "auth": {
+      "amount": 2000,
+      "orderId": "orderidorderidorderid",
+      "itemName": "고구마",
+      "userId": "toBeUserId",
+      "userName": "toBeUser",
+      "returnUrl": "return.com"
+    },
+    "testColumn": "Test",
+    "bankCode": "kb"
+  }
 }
 
 ### payments 테스트 - asis
-### POST http://localhost:8080/api/payments?DATA=HiIamaAsIsByeBabo==
-### echo -n "ASISUSER001|AUTH|홍길동|10000|TX123" | base64
-#POST http://localhost:8080/v1/common/payments?DATA=QVNJU1VTRVIwMDF8QVVUSHztmY3quLjrj5l8MTAwMDB8VFgxMjM=
-#POST http://localhost:8080/v1/common/payments?DATA=D7kf9IFXCOeG5SRgL/bCurrp++BPF1j3qgq3YxaIpCkIvi2PUfIyAmmCoNscOAk0
 ### jsonString암호화버전
 POST http://localhost:8081/v1/common/payments?
-    DATA=fr9sIiJtG2Xk7cK1PQ7rix4a3O6d4OWD5STNfn/y8Zonyaj9Z4C3KE96UqAmqh8jECzTg5JHih/i8HFTxNUxxYHWCHK69+UzMdmwrWQDLAhyYCRxlzjx8u8Y76Ry3NlkK8OnzN1gUQyo+Z4kGG3Okk3Okl2/3FXFOC3AnS5rduU=
+    DATA=FPTsskVXryC4ZyRSAF2XeTEqt0O5IJD64Ka/z5XLV4DKJ+9tNFIO88POaOlKk1GU+dMZAolFDnG/VLFy6OrT2Qb2fg2u0LcUDNQHwIxENP8RJDp6+kLs4DLPDasHedZafuNu1AK4TqCVd8ZwKyzrNvgnN9GdI+6P8csOmuVF5S5NyufXbVvAc1zFQfjKSrthVm2AH/zoZY1GOibimBmWN7OK7ZZbQa2V0JAiur40VVEu/+/sOu2/nwZ0XsWnZqLEZVxODSW4MT5kBMQ3slS1xHgTmF0tgmXx7mTh+GgpPZ5DqHqqaaAxyhb9utL1nbIVaIHIml8pttcUapk0w/kRzSFYg/sF6p1bV5iH1kFDZ04Kh04dcySKJKmJd+wbm1YAYhxShYzQFeFB3Vc17NOrSXU4Yhxx8asVSd+EWSvDkWo=
 User-Agent: IntelliJTest/1.0
 Content-Type: application/json
 
 ### auth 이후 tid Setting 버전
 ### RequestTest에서 암호화 후 아래 데이터 추가 필요
 POST http://localhost:8081/v1/common/payments?
-    DATA=v75zcxd5IZVarXbDvz1+3vs16B7PnVxLUuNmBAg+YP7JWpZjq8frJ8/zK9wnthCwpKRBjq/8DJr3SIgHZIk55Nw0uvxeOddb0JBANa4D8GR7AFHvFYzg+jKnMiLazK3If+rDrr3uqDNTwWQJPgqDMkJ2GvMWrFCQcCW/VvPiqI+4fy7DJCQhUNNB3YfcSiWMeP63++1Vt+7CtLytqX0Chut9mL7sj/n0HlEsnnqXyYM=
+    DATA=i0XpbH6tECX5pPC/4BrxLLofUhbUu8IiUp2mEvz4HvcpGauvF25ZjU7HO3va3/7F/usDSDpBFrEYnkL6sQhBrFw9f2giv6z43aGDDxYSdH6daFW2b9qgbkAf0ESByOhslZDM1P+6bziRWBJxAYgjWDiFNniHqOvlHrmFkMYFXKBimFCM4V/qGJ7n4nKwNijRAJxjThPjRfuMH3pgHm82QGEIGxpenb4AvIJgrI8tnFSp4N+9JYOSOttEZe5b6gJJBZs5ba7XZT/G1J/mLuHbWAStcwplzNnzfOuzQtsHVWB2HfILiopUxzLWQcv1xT+GzRXMfk8YwaGMdtq5Jq9V9VdHW4ZZu/t75jfdao/DGib/dwJIJ5olIFqLgH7mYkjf2GHfT/n6FWTaxdhdHZCDdl1aTCtkL2SFBvTmQE68QL4PY+ZXfstb6AcobnDlLXhdUnLV4L5W2Sow1lIPfduOEg==
 User-Agent: IntelliJTest/1.0
 Content-Type: application/json
